@@ -2,9 +2,9 @@ const mineflayer = require('mineflayer')
 
 function createBot() {
   const bot = mineflayer.createBot({
-    host: "tên_server_của_bạn", 
-    port: 25565,
-    username: "TênBot" 
+    host: "server_ko-long.aternos.me", 
+    port: 35760,
+    username: "afkbot_123" 
   })
 
   // Khi vào server
