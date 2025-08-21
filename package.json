@@ -1,14 +1,20 @@
 {
   "name": "minecraft-afk-bot",
   "version": "1.0.0",
-  "description": "A simple Minecraft AFK bot using mineflayer",
+  "description": "AFK bot Minecraft auto reconnect + chống AFK",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
-  "author": "",
+  "keywords": [
+    "minecraft",
+    "bot",
+    "afk",
+    "mineflayer"
+  ],
+  "author": "onnichan",
   "license": "MIT",
   "dependencies": {
-    "mineflayer": "^4.14.0"
+    "mineflayer": "^4.20.1"
   }
 }
