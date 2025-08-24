@@ -51,7 +51,7 @@ createBot();
 
 
 setInterval(() => {
-  fetch("https://TEN-APP-RENDER.onrender.com")
+  fetch("https://afkbot-minecraft-1.onrender.com")
     .then(() => console.log("Pinged self để không sleep"))
     .catch(err => console.error("Ping lỗi:", err));
 }, 2 * 60 * 1000);
