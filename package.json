@@ -1,13 +1,14 @@
 {
   "name": "minecraft-bot",
   "version": "1.0.0",
-  "description": "Bot Minecraft auto reconnect + anti-AFK + auto chat",
-  "main": "index.js",
+  "description": "Simple Minecraft bot using mineflayer",
+  "main": "bot.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node bot.js"
   },
+  "author": "onnichan~tuan",
+  "license": "MIT",
   "dependencies": {
-    "mineflayer": "^4.16.0",
-    "node-fetch": "^2.6.7"
+    "mineflayer": "^4.20.0"
   }
 }
