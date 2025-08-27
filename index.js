@@ -1,50 +1,47 @@
-const mineflayer = require("mineflayer");
-const fetch = require("node-fetch");
+// npm install mineflayer
+
+const mineflayer = require('mineflayer')
+
 
 function createBot() {
   const bot = mineflayer.createBot({
-    host: "server_ko-long.aternos.me",
-    port: 35760, 
-    username: "kkktuanbot2k12", 
-  });
+    host: 'server_ko-long.aternos.me',   
+    port: 35760,         
+    username: 'tuanbottretrau2k12',  
+    version: false
+  })
 
-  
-  bot.on("spawn", () => {
-    console.log("✅ Bot đã vào server!");
-  });
+  bot.on('login', () => {
+    console.log('✅ Bot đã vào server!')
+    bot.chat('Bot đã online 🗿')
+  })
 
- 
-  bot.on("end", () => {
-    console.log("❌ Bot out, thử login lại sau 10s...");
-    setTimeout(createBot, 10000);
-  });
+  bot.on('chat', (username, message) => {
+    if (username === bot.username) return
+    console.log(`[${username}]: ${message}`)
 
-  
-  setInterval(() => {
-    const actions = [
-      () => bot.setControlState("jump", true),
-      () => bot.setControlState("jump", false),
-      () => bot.look(Math.random() * Math.PI * 2, 0) 
-    ];
-    const randomAction = actions[Math.floor(Math.random() * actions.length)];
-    randomAction();
-  }, 60 * 1000);
+    if (message === 'hi') {
+      bot.chat('Hello ' + username + '!')
+    }
+  })
 
-  
-  const chatMessages = [
-    "hi bro!",
-    "tao bi dien ay",
-    "tao la bot ma",
-    "Chill thôi!",
-    "tận hưởng server đi",
-    "kkk..."
-  ];
+  // Anti-AFK: mỗi 10 giây nhảy 1 lần
+  bot.on('spawn', () => {
+    setInterval(() => {
+      bot.setControlState('jump', true)
+      setTimeout(() => bot.setControlState('jump', false), 500)
+    }, 10000)
+  })
 
-  
-  setInterval(() => {
-    const msg = chatMessages[Math.floor(Math.random() * chatMessages.length)];
-    bot.chat(msg);
-  }, 120000);
+  bot.on('error', err => {
+    console.log('❌ Lỗi:', err)
+  })
+
+  bot.on('end', () => {
+    console.log('⚠️ Bot bị disconnect, thử join lại sau 5 giây...')
+    setTimeout(createBot, 5000) // join lại sau 5 giây
+  })
 }
 
-
+// Khởi động bot lần đầu
+createBot()
